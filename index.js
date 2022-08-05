@@ -21,9 +21,7 @@ useUnifiedTopology: true
 // application routes
 app.use("/todo", todoHandler)
 
-app.get("/", (req,res)=>{
-  res.send("done")
-})
+
 
 
 

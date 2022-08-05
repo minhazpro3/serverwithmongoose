@@ -7,7 +7,8 @@ const Todo = new mongoose.model("Todo", todoSchema)
 
 // GET ALL THE TODO
 router.get("/", async (req,res)=>{
-
+      const result =  await Todo.find({})
+        res.status(200).json(result)
 })
 
 // GET A TODO BY ID
@@ -47,7 +48,6 @@ router.post("/all", async (req,res)=>{
 
 // PUT TODO
 router.put('/:id', async (req,res)=>{
-    
     await Todo.updateOne(
         {_id:req.params.id},
         {
@@ -63,7 +63,10 @@ router.put('/:id', async (req,res)=>{
 
 // DELETE TODO
 router.delete("/:id", async (req,res)=>{
-
+    await Todo.deleteOne(
+        {_id:req.params.id} )
+    res.status(200).json({
+        message:"Todos ware deleted success"})
 })
 
 module.exports = router
